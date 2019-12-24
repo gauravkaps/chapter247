@@ -5,9 +5,6 @@ import {graphql} from 'react-apollo';
 // import { compose } from "recompose";
 import { addUserMutation} from "../query/queries";
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
-})
 
 class Register extends Component {
     constructor(props){
@@ -146,6 +143,7 @@ class Register extends Component {
 
     formSubmit(e){
         e.preventDefault();
+        // mutation for add user
         this.props.addUserMutation({
             variables:{
                 email: this.state.email,
