@@ -1,6 +1,6 @@
 const graphql = require("graphql");
-const User = require("../models/userRegister");
 const { db } = require("../pgAdaptor");
+
 
 const {
     GraphQLObjectType, 
@@ -69,7 +69,7 @@ const Mutation = new GraphQLObjectType({
                 skills: {type: new GraphQLNonNull(GraphQLString)},
                 contactNumber: {type: new GraphQLNonNull(GraphQLString)},
             },
-            async resolve(parent, args){
+            resolve(parent, args){
                 console.log(args);
                 const query = `INSERT INTO "user" (email, password, gender, country, state, city, skills, phone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING email`;
                 let values = [
